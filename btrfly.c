@@ -1,11 +1,7 @@
  #include <stdio.h>
-
 int main()
-
 {
-
     int n,i,j,x,y,lines,stars;
-
     printf("Number of lines: ");
     scanf("%d", &n);
     lines = 2 * (n-2) + 1;
@@ -33,7 +29,6 @@ int main()
             }
             printf("\n");
         }
- 
     }
     for(j=1;j<=stars + 1;j++){
         printf(" ");
@@ -60,8 +55,5 @@ int main()
             }
             printf("\n");
         }
- 
-    }
-        
-    
+    }           
 }  
