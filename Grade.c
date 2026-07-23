@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 float calc(float i){
       
@@ -11,9 +12,10 @@ float calc(float i){
       else if (i >= 50) return 2.5;
       else if (i >= 45) return 2.25;
       else if (i >= 40) return 2.00;
-      else if (i < 40) return 0.00;
+      else return 0.00;
       
 }
+
 
 float cgpa(float course1[],float course2[],float course3[],
                 float course4[],float course5[],float course6[],float course7[], int i){
@@ -23,7 +25,7 @@ float cgpa(float course1[],float course2[],float course3[],
 }
 
 int main(){
-    int i, j;
+    int i, j, roll;
     float cg[5], course1[5], course2[5], course3[5], course4[5], course5[5], course6[5], course7[5], total[5];
 
     for (i = 0; i < 5; i++){
@@ -88,9 +90,29 @@ int main(){
                 rolls[j+1] = temp1;
             }
         }
-    }   
-    for(i = 0; i < 5; i++){
-        printf("Roll %d with CGPA %0.2f has merit %d\n", rolls[i], cg[i], i + 1);
+    }    
+    while(1){
+        char grade[10];
+        printf("Press -1 to exit or,\nSee result of Roll: ");
+        scanf("%d", &roll);
+        
+        if (roll == -1 || roll < 1 || roll > 5) break;
+        for(i = 0; i < 5; i++){
+            if(rolls[i] == roll) break;
+        }
+        if (cg[i] == 4.00) strcpy(grade, "A+");
+        else if (cg[i] >= 3.75) strcpy(grade, "A");
+        else if (cg[i] >= 3.50) strcpy(grade, "A-");
+        else if (cg[i] >= 3.25) strcpy(grade, "B+");
+        else if (cg[i] >= 3.00) strcpy(grade, "B");
+        else if (cg[i] >= 2.75) strcpy(grade, "B-");
+        else if (cg[i] >= 2.50) strcpy(grade, "C+");
+        else if (cg[i] >= 2.25) strcpy(grade, "C");
+        else if (cg[i] >= 2.00) strcpy(grade, "D");
+        else strcpy(grade, "F");
+          
+        printf("Roll %d has CGPA: %0.2f, Grade: %s and merit %d\n", rolls[i], cg[i],grade, i + 1);
     }
+    return 0;
 }
  
