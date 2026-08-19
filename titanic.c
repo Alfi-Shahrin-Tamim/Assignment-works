@@ -35,5 +35,6 @@ int main(){
  
     printf("Total females: %d  Female survivors: %d\n", female_total, female_survived);
     printf("Percentage of female survivors: %0.2f\n", female_percent);  
+    fclose(file);
 
 }
