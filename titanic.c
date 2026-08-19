@@ -17,6 +17,7 @@ int main(){
 
     while(fgets(words, sizeof(words), file)){
         char *first = strchr(words, ',');
+        if(first == NULL) continue;
         char survived = *(first + 1);
         if(strstr(words, ",male,") != NULL){
             male_total++;
@@ -27,8 +28,9 @@ int main(){
             if(survived == '1') female_survived++;
         }       
     }
-    float male_percent = ((float)male_survived / male_total) * 100;
-    float female_percent = ((float)female_survived/ female_total) * 100;
+    float male_percent = 0, female_percent = 0;
+    if(male_total != 0) male_percent = ((float)male_survived / male_total) * 100;
+    if(female_total != 0) female_percent = ((float)female_survived/ female_total) * 100;
 
     printf("Total males: %d  Male survivors: %d\n", male_total, male_survived);
     printf("Percentage of male survivors: %0.2f\n", male_percent);
@@ -36,5 +38,6 @@ int main(){
     printf("Total females: %d  Female survivors: %d\n", female_total, female_survived);
     printf("Percentage of female survivors: %0.2f\n", female_percent);  
     fclose(file);
+    return 0;
 
 }
